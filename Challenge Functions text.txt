@@ -1,1 +1,60 @@
-﻿
+﻿using System;
+
+namespace Challenge_Functions
+{
+    class Program
+    {
+        static int D6()
+        {
+            Random ran = new Random();
+            int number = ran.Next(1, 6);
+            return number;
+        }
+        static int D6(int number)
+        {
+            Random ran = new Random();
+            int Diceroll = ran.Next(1, 6);
+            int sum = 0;
+            for (int i = 0; i <= number; i++)
+            {
+                sum += Diceroll;
+            }
+            return sum;
+        }
+        static bool SkillCheck(int number)
+        {
+            Random ran = new Random();
+            int Diceroll = ran.Next(1, 6);
+            int sum = 0;
+            for (int i = 0; i <= 3; i++)
+            {
+                sum += Diceroll;
+            }
+            if (sum <= number)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        static void Main(string[] args)
+        {
+            Console.WriteLine($"The first diceroll became the number {D6()}");
+            Console.Write("Write how many times you want to roll the dice: ");
+            int rolls = int.Parse(Console.ReadLine());
+            Console.WriteLine($"The sum of the rolls became {D6(rolls)}");
+            Console.Write("Write a number: ");
+            int num = int.Parse(Console.ReadLine());
+            if (SkillCheck(num) == true)
+            {
+                Console.WriteLine("The number was bigger than or equal to the summary of te dicerolls");
+            }
+            else
+            {
+                Console.WriteLine("The summary of the rolls was bigger than the number you entered");
+            }
+        }
+    }
+}
